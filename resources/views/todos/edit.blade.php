@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-center my-5">Create Todo</h1>
+<h1 class="text-center my-5">Update Todo</h1>
 
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card card-default">
             <div class="card-header">
-                Create new todo
+                Update a todo
             </div>
             <div class="card-body">
                 @if ($errors->any())
@@ -19,16 +19,17 @@
                     @endforeach
                 </div>
                 @endif
-                <form action="/store-todo" method="POST">
+                <form action="/todos/{{$todo->id}}/update-todo" method="POST">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Name">
+                        <input type="text" name="name" class="form-control" value="{{$todo->name}}">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="description" class="form-control" placeholder="Descriptions">
+                        <textarea name="description" class="form-control" cols="5"
+                            rows="5">{{$todo->description}}</textarea>
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-success">Create Todo</button>
+                        <button type="submit" class="btn btn-success">Update Todo</button>
                     </div>
                 </form>
             </div>

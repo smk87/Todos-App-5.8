@@ -17,7 +17,10 @@ Todos List
                 <ul class="list-group">
                     <li class="list-group-item">
                         {{$todo->name}}
-                        <a class="btn btn-primary float-right" href="/todos/{{$todo->id}}">View</a>
+                        @if(!$todo->completed)
+                        <a class="btn btn-warning float-right" href="/todos/{{$todo->id}}/complete">Complete</a>
+                        @endif
+                        <a class="btn btn-primary float-right mr-2" href="/todos/{{$todo->id}}">View</a>
                     </li>
                 </ul>
                 @endforeach
